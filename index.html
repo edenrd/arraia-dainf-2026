@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Arraiá Gourmet DAINF 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CORE DESIGN: "DevOps meets Festa Junina"
+           Palette: Midnight Navy (#020617), Safety Orange (#f97316), Emerald Code (#10b981)
+        */
+        * { box-sizing: border-box; }
+        p { margin: 0; margin-bottom: 12px; }
+        body {
+            background-color: #0f172a;
+            display: grid;
+            gap: 40px;
+            grid-template-columns: 1fr;
+            margin: 0;
+            min-height: 100vh;
+            padding: 40px 0;
+            place-items: center;
+        }
+
+        .slide-container {
+            align-items: center;
+            background-color: #020617;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Urbanist', sans-serif;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px;
+            position: relative;
+            width: 1280px;
+            border: 1px solid #1e293b;
+        }
+
+        /* Abstract background styling */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 10% 10%, rgba(249, 115, 22, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
+            z-index: 0;
+        }
+
+        .slide-container > * { position: relative; z-index: 1; }
+
+        /* Typography */
+        h1, h2, h3 { color: #f8fafc; font-family: 'Urbanist', sans-serif; margin: 0; font-weight: 700; }
+        .code-font { font-family: 'JetBrains Mono', monospace; color: #10b981; }
+        
+        .slide-container h1 { font-size: 72px; line-height: 1; margin-bottom: 15px; text-align: center; }
+        .slide-container .slide-title { 
+            font-size: 42px; 
+            margin-bottom: 40px; 
+            text-align: left; 
+            width: 100%; 
+            border-left: 6px solid #f97316; 
+            padding-left: 24px; 
+            color: #f8fafc; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .slide-container p, .slide-container li { font-size: 20px; line-height: 1.5; color: #94a3b8; }
+        .slide-container .subtitle { font-size: 26px; color: #cbd5e1; text-align: center; max-width: 950px; }
+
+        /* Layout definitions */
+        .content-area { display: flex; flex-direction: column; flex-grow: 1; width: 100%; justify-content: center; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; width: 100%; align-items: center; }
+
+        .section-title-layout { text-align: center; width: 100%; }
+        .section-title-layout h2 { font-size: 68px; color: #f97316; }
+        .section-title-layout hr { border: none; height: 5px; background: #f97316; width: 120px; margin: 25px auto; }
+
+        .tiled-content { display: flex; gap: 25px; width: 100%; align-items: stretch; }
+        .tile { flex: 1; background: #0f172a; border-radius: 20px; padding: 40px; border: 1px solid #334155; text-align: center; }
+        .tile .icon { font-size: 48px; color: #10b981; margin-bottom: 20px; }
+        .tile h3 { font-size: 26px; margin-bottom: 12px; color: #f1f5f9; }
+
+        .image-tile { flex: 1; text-align: center; }
+        .image-wrapper { height: 280px; border-radius: 24px; overflow: hidden; margin-bottom: 20px; border: 2px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        .slide-container.bleed-image-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; align-items: start; }
+        .bleed-image-layout .content-container { padding: 80px; display: flex; flex-direction: column; justify-content: center; height: 100%; }
+        .bleed-image-layout .image-container { height: 100%; overflow: hidden; }
+        .bleed-image-layout img { width: 100%; height: 720px; object-fit: cover; }
+
+        .full-bg-image { background-size: cover; background-position: center; }
+        .full-bg-image .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(2,6,23,0.85), rgba(2,6,23,0.6)); }
+
+        .table-layout table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid #334155; border-radius: 12px; overflow: hidden; }
+        .table-layout th { background: #1e293b; color: #f97316; text-align: left; padding: 22px; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; }
+        .table-layout td { background: #020617; border-bottom: 1px solid #1e293b; padding: 22px; color: #e2e8f0; font-size: 20px; }
+        
+        .address-box { background: #1e293b; border-radius: 12px; padding: 25px; border-left: 6px solid #f97316; margin-top: 30px; display: inline-block; }
+    </style>
+</head>
+<body>
+
+<div class="slide-container full-bg-image" id="slide1" style="background-image: url('http://googleusercontent.com/image_collection/image_retrieval/8305460649287518619');">
+    <div class="overlay"></div>
+    <div class="section-title-layout">
+        <p class="code-font" style="font-size: 22px; letter-spacing: 6px; margin-bottom: 10px;">RELEASE 04.07.2026</p>
+        <h1>Arraiá Gourmet DAINF</h1>
+        <div class="subtitle">Deploying: Agnolini, Vinho e Tradição na Produção mais aguardada do semestre acadêmico.</div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2">
+    <div class="section-title-layout">
+        <hr>
+        <h2>Endpoint de Produção</h2>
+        <p class="subtitle" style="font-size: 32px; color: #f8fafc; font-weight: 700;">Salão de Festas do Eden e Mariza</p>
+        <div class="address-box">
+            <p class="code-font" style="font-size: 26px; color: #f97316; margin-bottom: 0;">
+                <i class="fa-solid fa-location-dot"></i> Av. Tupy, 2166 — Tecle 100
+            </p>
+        </div>
+        <div style="margin-top: 50px;">
+            <p class="code-font" style="font-size: 20px; color: #10b981;">// Connectivity status: Available</p>
+            <p style="font-size: 28px; color: #f1f5f9;">Sábado, 04 de Julho — <strong>A partir das 17h</strong></p>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Main Dependency: Sopa de Agnoline</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="text-side">
+                <h3 style="color: #10b981; font-size: 32px; margin-bottom: 25px;">Agnolini / Capeletti em Brodo</h3>
+                <p>Nossa biblioteca principal é carregada com sabor autêntico: massa artesanal em um caldo de galinha caipira claro e revigorante.</p>
+                <p>Configuração otimizada para o clima de Julho: alta performance térmica e satisfação total do usuário.</p>
+                <ul style="list-style: none; padding: 0; margin-top: 30px;">
+                    <li style="margin-bottom: 15px;"><i class="fa-solid fa-square-check" style="color: #10b981; margin-right: 15px;"></i> Caldo dourado e fumegante</li>
+                    <li style="margin-bottom: 15px;"><i class="fa-solid fa-square-check" style="color: #10b981; margin-right: 15px;"></i> Queijo ralado de alto processamento</li>
+                    <li style="margin-bottom: 15px;"><i class="fa-solid fa-square-check" style="color: #10b981; margin-right: 15px;"></i> Pão colonial integrado na mesa</li>
+                </ul>
+            </div>
+            <div class="image-wrapper" style="height: 480px;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/15664790547462605603" alt="Sopa de Agnolini (Capeletti) em brodo profissional">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Secondary Modules & Hotfixes</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-fire"></i></div>
+                <h3>Quentão Protocol</h3>
+                <p>Patch de aquecimento essencial com especiarias e frutas. Interface líquida de alta temperatura.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-popcorn"></i></div>
+                <h3>Popcorn & Pinhão</h3>
+                <p>Micro-serviços crocantes de pipoca, milho cozido e pinhão para o início do deployment.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-ice-cream"></i></div>
+                <h3>Junina Sweets</h3>
+                <p>Plugins de açúcar: Paçoca, pé de moleque e bolos típicos integrados na mesa de doces.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout" id="slide5">
+    <div class="content-container">
+        <h2 class="slide-title">Protocolo Inbound</h2>
+        <h3 style="color: #f8fafc; font-size: 28px; margin-bottom: 20px;">BYOB: Bring Your Own Beverage</h3>
+        <p>Para garantir a compatibilidade total com o paladar de cada usuário, adotamos o modelo de bebida compartilhada.</p>
+        <p><strong>Ação requerida:</strong> Favor trazer seu vinho favorito ou sua bebida de preferência para o brinde final.</p>
+        <div style="background: #0f172a; padding: 25px; border-radius: 12px; border: 1px dashed #f97316; margin-top: 30px;">
+            <p class="code-font" style="font-size: 18px; color: #f97316;">while(event_running) {<br>&nbsp;&nbsp;brinde(user_choice_beverage);<br>}</p>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="http://googleusercontent.com/image_collection/image_retrieval/11603643492266461537" alt="Vinho e taças em ambiente rústico">
+    </div>
+</div>
+
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Side Quests & Activities</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="image-tile">
+                <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/1338945792804218795" alt="Bingo Copa do Mundo"></div>
+                <h3>Bingo da Piazada</h3>
+                <p>Thread paralela com prêmios alusivos à Copa 2026. Organizado pela nossa piazada!</p>
+            </div>
+            <div class="image-tile">
+                <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/5575203045531924368" alt="Troca de Figurinhas"></div>
+                <h3>Sticker Merge</h3>
+                <p>Ponto oficial de troca de figurinhas da Copa. Traga suas repetidas para o merge!</p>
+            </div>
+            <div class="image-tile">
+                <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/16071519869814137071" alt="Doces Típicos"></div>
+                <h3>Open Source Food</h3>
+                <p>Injeção de módulos: Deseja levar um prato típico? Indique o "payload" no formulário!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Manifesto de Configuração</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="code-font">start_time</span></td>
+                        <td>A partir das 17:00h (GMT-3)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="code-font">dress_code</span></td>
+                        <td>Caipira-Chique (Xadrez / Junino)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="code-font">rsvp_deadline</span></td>
+                        <td>Até 20 de Junho de 2026</td>
+                    </tr>
+                    <tr>
+                        <td><span class="code-font">environment</span></td>
+                        <td>Festa Junina + Copa do Mundo 2026</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <div class="section-title-layout">
+        <h1>Commit sua Presença!</h1>
+        <p class="subtitle" style="margin-bottom: 45px;">Acesse o formulário oficial para validar sua entrada na rede do Arraiá.</p>
+        
+        <div style="background: #1e293b; padding: 40px; border-radius: 16px; border: 2px solid #10b981; max-width: 900px; margin: 0 auto;">
+            <p class="code-font" style="font-size: 22px; color: #f1f5f9; margin-bottom: 25px;">
+                <a href="https://forms.gle/6nzaBRJHS19uWoSK6" target="_blank" style="color: #10b981; text-decoration: none;">https://forms.gle/6nzaBRJHS19uWoSK6</a>
+            </p>
+            <p style="color: #94a3b8; font-size: 18px;">Clique no link acima para confirmar: nome, acompanhantes, interesse no bingo e sua contribuição opcional de prato típico.</p>
+        </div>
+        
+        <p class="code-font" style="margin-top: 50px; font-size: 26px; color: #f97316;">// Nos vemos no dia 04/07!</p>
+    </div>
+</div>
+
+</body>
+</html>
