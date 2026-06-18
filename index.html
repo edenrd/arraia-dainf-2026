@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* CORE DESIGN: "DevOps meets Festa Junina" */
+        /* CORE DESIGN */
         * { box-sizing: border-box; }
         p { margin: 0; margin-bottom: 12px; }
         
@@ -24,13 +24,15 @@
             overflow-x: hidden;
         }
 
-        /* Container do Slide com proporção travada em 16:9 */
+        /* Container do Slide com proporção 16:9 centralizado */
         .slide-wrapper {
             width: 1280px;
             height: 720px;
             position: relative;
-            transform-origin: top left; /* Alterado para top left para precisão no cálculo */
+            transform-origin: top center;
             margin-bottom: 0;
+            display: flex;
+            justify-content: center;
         }
 
         .slide-container {
@@ -48,7 +50,6 @@
             padding: 60px;
             position: absolute;
             top: 0;
-            left: 0;
             border: 1px solid #1e293b;
         }
 
@@ -90,13 +91,13 @@
         .section-title-layout hr { border: none; height: 5px; background: #f97316; width: 120px; margin: 25px auto; }
 
         .tiled-content { display: flex; gap: 25px; width: 100%; align-items: stretch; }
-        .tile { flex: 1; background: #0f172a; border-radius: 20px; padding: 40px; border: 1px solid #334155; text-align: center; }
-        .tile .icon { font-size: 48px; color: #10b981; margin-bottom: 20px; }
-        .tile h3 { font-size: 26px; margin-bottom: 12px; color: #f1f5f9; }
-
-        .image-tile { flex: 1; text-align: center; }
-        .image-wrapper { height: 280px; border-radius: 24px; overflow: hidden; margin-bottom: 20px; border: 2px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        
+        /* Grid de Módulos com Imagem (Igual ao Side Quests) */
+        .image-tile { flex: 1; text-align: center; background: #0f172a; border-radius: 20px; padding: 20px; border: 1px solid #334155; }
+        .image-wrapper { height: 200px; border-radius: 14px; overflow: hidden; margin-bottom: 15px; border: 1px solid #475569; }
         .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .image-tile h3 { font-size: 24px; margin-bottom: 10px; color: #f1f5f9; }
+        .image-tile p { font-size: 18px; color: #94a3b8; margin-bottom: 0; }
 
         .slide-container.bleed-image-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; align-items: start; }
         .bleed-image-layout .content-container { padding: 80px; display: flex; flex-direction: column; justify-content: center; height: 100%; }
@@ -173,20 +174,20 @@
         <h2 class="slide-title">Secondary Modules & Hotfixes</h2>
         <div class="content-area">
             <div class="tiled-content">
-                <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-fire"></i></div>
-                    <h3>Quentão Protocol</h3>
-                    <p>Patch de aquecimento essencial com especiarias e frutas. Interface líquida de alta temperatura.</p>
+                <div class="image-tile">
+                    <div class="image-wrapper"><img src="quentao.jpg" alt="Quentão tradicional"></div>
+                    <h3><i class="fa-solid fa-fire" style="color: #f97316; margin-right: 10px;"></i>Quentão Protocol</h3>
+                    <p>Patch de aquecimento essencial com especiarias e frutas. Interface líquida quente.</p>
                 </div>
-                <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-popcorn"></i></div>
-                    <h3>Popcorn & Pinhão</h3>
-                    <p>Micro-serviços crocantes de pipoca, milho cozido e pinhão para o início do deployment.</p>
+                <div class="image-tile">
+                    <div class="image-wrapper"><img src="pipoca.jpg" alt="Pipoca e Pinhão"></div>
+                    <h3><i class="fa-solid fa-popcorn" style="color: #10b981; margin-right: 10px;"></i>Popcorn & Pinhão</h3>
+                    <p>Micro-serviços crocantes de pipoca e pinhão para o início do deployment.</p>
                 </div>
-                <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-ice-cream"></i></div>
-                    <h3>Junina Sweets</h3>
-                    <p>Plugins de açúcar: Paçoca, pé de moleque e bolos típicos integrados na mesa de doces.</p>
+                <div class="image-tile">
+                    <div class="image-wrapper"><img src="doces.jpg" alt="Doces juninos"></div>
+                    <h3><i class="fa-solid fa-candy-cane" style="color: #f97316; margin-right: 10px;"></i>Junina Sweets</h3>
+                    <p>Plugins de açúcar: Paçoca, pé de moleque e bolos típicos na mesa de doces.</p>
                 </div>
             </div>
         </div>
@@ -215,18 +216,18 @@
         <h2 class="slide-title">Side Quests & Activities</h2>
         <div class="content-area">
             <div class="tiled-content">
-                <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-trophy"></i></div>
+                <div class="image-tile" style="padding: 40px 20px;">
+                    <div class="icon" style="font-size: 54px; color: #f97316; margin-bottom: 20px;"><i class="fa-solid fa-trophy"></i></div>
                     <h3>Bingo da Piazada</h3>
                     <p>Thread paralela com prêmios alusivos à Copa 2026. Organizado pela nossa piazada!</p>
                 </div>
-                <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-ticket"></i></div>
+                <div class="image-tile" style="padding: 40px 20px;">
+                    <div class="icon" style="font-size: 54px; color: #10b981; margin-bottom: 20px;"><i class="fa-solid fa-ticket"></i></div>
                     <h3>Sticker Merge</h3>
                     <p>Ponto oficial de troca de figurinhas da Copa. Traga suas repetidas para o merge!</p>
                 </div>
-                <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-utensils"></i></div>
+                <div class="image-tile" style="padding: 40px 20px;">
+                    <div class="icon" style="font-size: 54px; color: #f97316; margin-bottom: 20px;"><i class="fa-solid fa-utensils"></i></div>
                     <h3>Open Source Food</h3>
                     <p>Injeção de módulos: Deseja levar um prato típico? Indique o "payload" no formulário!</p>
                 </div>
@@ -258,7 +259,7 @@
                         </tr>
                         <tr>
                             <td><span class="code-font">rsvp_deadline</span></td>
-                            <td>Até 20 de Junho de 2026</td>
+                            <td>Até 30 de Junho de 2026</td>
                         </tr>
                         <tr>
                             <td><span class="code-font">environment</span></td>
@@ -298,21 +299,19 @@
 
         if (larguraJanela < larguraOriginal) {
             const escala = larguraJanela / larguraOriginal;
-            // Calcula quanta margem esquerda precisamos adicionar para centralizar perfeitamente
-            const margemEsquerda = (larguraJanela - (larguraOriginal * escala)) / 2;
             
             wrappers.forEach(wrapper => {
                 wrapper.style.transform = `scale(${escala})`;
                 wrapper.style.height = `${alturaOriginal * escala}px`;
                 wrapper.style.width = `${larguraOriginal}px`;
-                wrapper.style.marginLeft = `${margemEsquerda}px`; // Força a centralização matemática
             });
+            // Alinha o body inteiro via Flexbox para evitar desvios laterais
+            document.body.style.alignItems = 'center';
         } else {
             wrappers.forEach(wrapper => {
                 wrapper.style.transform = 'none';
                 wrapper.style.height = `${alturaOriginal}px`;
                 wrapper.style.width = `${larguraOriginal}px`;
-                wrapper.style.marginLeft = '0px';
             });
         }
     }
