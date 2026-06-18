@@ -2,55 +2,49 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convite Arraiá Gourmet DAINF 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* CORE DESIGN */
+        /* CORE DESIGN: Mobile-First Escalável */
         * { box-sizing: border-box; }
         p { margin: 0; margin-bottom: 12px; }
         
         body {
             background-color: #0f172a;
             margin: 0;
-            padding: 20px 0;
+            padding: 20px 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
-            overflow-x: hidden;
+            gap: 25px;
         }
 
-        /* Container do Slide com proporção 16:9 centralizado */
+        /* O segredo do alinhamento: os slides escalam via CSS de acordo com a largura da tela */
         .slide-wrapper {
-            width: 1280px;
-            height: 720px;
+            width: 100%;
+            max-width: 1280px;
+            aspect-ratio: 16 / 9; /* Força os slides a manterem o formato de tela cheia sem distorcer */
             position: relative;
-            transform-origin: top center;
-            margin-bottom: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .slide-container {
-            width: 1280px;
-            height: 720px;
-            align-items: center;
             background-color: #020617;
             border-radius: 16px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid #1e293b;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            font-family: 'Urbanist', sans-serif;
             justify-content: center;
-            overflow: hidden;
-            padding: 60px;
-            position: absolute;
-            top: 0;
-            border: 1px solid #1e293b;
+            align-items: center;
+            padding: 4%; /* Padding percentual para se adaptar a qualquer celular */
+            position: relative;
         }
 
         .slide-container::before {
@@ -62,65 +56,66 @@
             z-index: 0;
         }
 
-        .slide-container > * { position: relative; z-index: 1; }
+        .slide-container > * { position: relative; z-index: 1; width: 100%; }
 
+        /* Tipografia Escalável */
         h1, h2, h3 { color: #f8fafc; font-family: 'Urbanist', sans-serif; margin: 0; font-weight: 700; }
         .code-font { font-family: 'JetBrains Mono', monospace; color: #10b981; }
         
-        .slide-container h1 { font-size: 72px; line-height: 1; margin-bottom: 15px; text-align: center; }
+        .slide-container h1 { font-size: min(5.5vw, 72px); line-height: 1.1; margin-bottom: 15px; text-align: center; }
         .slide-container .slide-title { 
-            font-size: 42px; 
-            margin-bottom: 40px; 
+            font-size: min(3.2vw, 42px); 
+            margin-bottom: min(3vw, 40px); 
             text-align: left; 
-            width: 100%; 
             border-left: 6px solid #f97316; 
-            padding-left: 24px; 
+            padding-left: 20px; 
             color: #f8fafc; 
             text-transform: uppercase;
             letter-spacing: 2px;
         }
         
-        .slide-container p, .slide-container li { font-size: 20px; line-height: 1.5; color: #94a3b8; }
-        .slide-container .subtitle { font-size: 26px; color: #cbd5e1; text-align: center; max-width: 950px; }
+        .slide-container p, .slide-container li { font-size: min(1.6vw, 20px); line-height: 1.5; color: #94a3b8; }
+        .slide-container .subtitle { font-size: min(2vw, 26px); color: #cbd5e1; text-align: center; margin: 0 auto; max-width: 80%; }
 
-        .content-area { display: flex; flex-direction: column; flex-grow: 1; width: 100%; justify-content: center; }
-        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; width: 100%; align-items: center; }
+        /* Layouts de Grade */
+        .content-area { display: flex; flex-direction: column; justify-content: center; height: 100%; }
+        .two-column { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 5%; align-items: center; }
 
-        .section-title-layout { text-align: center; width: 100%; }
-        .section-title-layout h2 { font-size: 68px; color: #f97316; }
-        .section-title-layout hr { border: none; height: 5px; background: #f97316; width: 120px; margin: 25px auto; }
+        .section-title-layout { text-align: center; }
+        .section-title-layout h2 { font-size: min(5vw, 68px); color: #f97316; }
+        .section-title-layout hr { border: none; height: 5px; background: #f97316; width: 100px; margin: 20px auto; }
 
-        .tiled-content { display: flex; gap: 25px; width: 100%; align-items: stretch; }
+        .tiled-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; }
         
-        /* Grid de Módulos com Imagem (Igual ao Side Quests) */
-        .image-tile { flex: 1; text-align: center; background: #0f172a; border-radius: 20px; padding: 20px; border: 1px solid #334155; }
-        .image-wrapper { height: 200px; border-radius: 14px; overflow: hidden; margin-bottom: 15px; border: 1px solid #475569; }
+        /* Blocos de Módulos com Imagens Ajustadas */
+        .image-tile { background: #0f172a; border-radius: 16px; padding: 15px; border: 1px solid #334155; text-align: center; display: flex; flex-direction: column; }
+        .image-wrapper { width: 100%; aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden; margin-bottom: 12px; border: 1px solid #475569; }
         .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        .image-tile h3 { font-size: 24px; margin-bottom: 10px; color: #f1f5f9; }
-        .image-tile p { font-size: 18px; color: #94a3b8; margin-bottom: 0; }
+        .image-tile h3 { font-size: min(1.8vw, 24px); margin-bottom: 8px; color: #f1f5f9; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .image-tile p { font-size: min(1.4vw, 18px); color: #94a3b8; margin-bottom: 0; line-height: 1.4; }
 
-        .slide-container.bleed-image-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; align-items: start; }
-        .bleed-image-layout .content-container { padding: 80px; display: flex; flex-direction: column; justify-content: center; height: 100%; }
-        .bleed-image-layout .image-container { height: 100%; overflow: hidden; }
-        .bleed-image-layout img { width: 100%; height: 720px; object-fit: cover; }
+        .slide-wrapper.bleed-layout { display: grid; grid-template-columns: 1fr 1fr; }
+        .bleed-layout .content-container { padding: 10%; display: flex; flex-direction: column; justify-content: center; }
+        .bleed-layout .image-container { width: 100%; height: 100%; overflow: hidden; }
+        .bleed-layout .image-container img { width: 100%; height: 100%; object-fit: cover; }
 
         .full-bg-image { background-size: cover; background-position: center; }
         .full-bg-image .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(2,6,23,0.85), rgba(2,6,23,0.6)); }
 
         .table-layout table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid #334155; border-radius: 12px; overflow: hidden; }
-        .table-layout th { background: #1e293b; color: #f97316; text-align: left; padding: 22px; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; }
-        .table-layout td { background: #020617; border-bottom: 1px solid #1e293b; padding: 22px; color: #e2e8f0; font-size: 20px; }
+        .table-layout th { background: #1e293b; color: #f97316; text-align: left; padding: 1.8%; font-size: min(1.8vw, 22px); text-transform: uppercase; }
+        .table-layout td { background: #020617; border-bottom: 1px solid #1e293b; padding: 1.8%; color: #e2e8f0; font-size: min(1.6vw, 20px); }
         
-        .address-box { background: #1e293b; border-radius: 12px; padding: 25px; border-left: 6px solid #f97316; margin-top: 30px; display: inline-block; }
+        .address-box { background: #1e293b; border-radius: 12px; padding: 15px 25px; border-left: 6px solid #f97316; margin-top: 20px; display: inline-block; width: auto; }
     </style>
 </head>
 <body>
 
 <div class="slide-wrapper">
-    <div class="slide-container full-bg-image" id="slide1" style="background-image: url('banner.jpg');">
+    <div class="slide-container full-bg-image" style="background-image: url('banner.jpg');">
         <div class="overlay"></div>
         <div class="section-title-layout">
-            <p class="code-font" style="font-size: 22px; letter-spacing: 6px; margin-bottom: 10px;">RELEASE 04.07.2026</p>
+            <p class="code-font" style="font-size: min(1.8vw, 22px); letter-spacing: 6px; margin-bottom: 10px;">RELEASE 04.07.2026</p>
             <h1>Arraiá Gourmet DAINF</h1>
             <div class="subtitle">Deploying: Agnolini, Vinho e Tradição na Produção mais aguardada do semestre acadêmico.</div>
         </div>
@@ -128,41 +123,41 @@
 </div>
 
 <div class="slide-wrapper">
-    <div class="slide-container" id="slide2">
+    <div class="slide-container">
         <div class="section-title-layout">
             <hr>
             <h2>Endpoint de Produção</h2>
-            <p class="subtitle" style="font-size: 32px; color: #f8fafc; font-weight: 700;">Salão de Festas do Eden e Mariza</p>
+            <p class="subtitle" style="font-size: min(2.5vw, 32px); color: #f8fafc; font-weight: 700;">Salão de Festas do Eden e Mariza</p>
             <div class="address-box">
-                <p class="code-font" style="font-size: 26px; color: #f97316; margin-bottom: 0;">
+                <p class="code-font" style="font-size: min(2.2vw, 26px); color: #f97316; margin-bottom: 0;">
                     <i class="fa-solid fa-location-dot"></i> Av. Tupy, 2166 — Tecle 100
                 </p>
             </div>
-            <div style="margin-top: 50px;">
-                <p class="code-font" style="font-size: 20px; color: #10b981;">// Connectivity status: Available</p>
-                <p style="font-size: 28px; color: #f1f5f9;">Sábado, 04 de Julho — <strong>A partir das 17h</strong></p>
+            <div style="margin-top: 4%;">
+                <p class="code-font" style="font-size: min(1.5vw, 20px); color: #10b981;">// Connectivity status: Available</p>
+                <p style="font-size: min(2.2vw, 28px); color: #f1f5f9;">Sábado, 04 de Julho — <strong>A partir das 17h</strong></p>
             </div>
         </div>
     </div>
 </div>
 
 <div class="slide-wrapper">
-    <div class="slide-container" id="slide3">
+    <div class="slide-container">
         <h2 class="slide-title">Main Dependency: Sopa de Agnoline</h2>
         <div class="content-area">
             <div class="two-column">
                 <div class="text-side">
-                    <h3 style="color: #10b981; font-size: 32px; margin-bottom: 25px;">Agnolini / Capeletti em Brodo</h3>
-                    <p>Nossa biblioteca principal é carregada com sabor autêntico: massa artesanal em um caldo de galinha caipira claro e revigorante.</p>
+                    <h3 style="color: #10b981; font-size: min(2.5vw, 32px); margin-bottom: 15px;">Agnolini / Capeletti em Brodo</h3>
+                    <p>Nossa biblioteca principal é carregada com sabor autêntico: massa artesanal em um caldo claro e revigorante.</p>
                     <p>Configuração otimizada para o clima de Julho: alta performance térmica e satisfação total do usuário.</p>
-                    <ul style="list-style: none; padding: 0; margin-top: 30px;">
-                        <li style="margin-bottom: 15px;"><i class="fa-solid fa-square-check" style="color: #10b981; margin-right: 15px;"></i> Caldo dourado e fumegante</li>
-                        <li style="margin-bottom: 15px;"><i class="fa-solid fa-square-check" style="color: #10b981; margin-right: 15px;"></i> Queijo ralado de alto processamento</li>
-                        <li style="margin-bottom: 15px;"><i class="fa-solid fa-square-check" style="color: #10b981; margin-right: 15px;"></i> Pão colonial integrado na mesa</li>
+                    <ul style="list-style: none; padding: 0; margin-top: 15px;">
+                        <li style="margin-bottom: 8px;"><i class="fa-solid fa-square-check" style="color: #10b981; margin-right: 10px;"></i> Caldo dourado e fumegante</li>
+                        <li style="margin-bottom: 8px;"><i class="fa-solid fa-square-check" style="color: #10b981; margin-right: 10px;"></i> Queijo ralado de alto processamento</li>
+                        <li style="margin-bottom: 8px;"><i class="fa-solid fa-square-check" style="color: #10b981; margin-right: 10px;"></i> Pão colonial integrado na mesa</li>
                     </ul>
                 </div>
-                <div class="image-wrapper" style="height: 480px;">
-                    <img src="agnolini.jpg" alt="Sopa de Agnolini (Capeletti) em brodo profissional">
+                <div class="image-wrapper" style="height: 100%; aspect-ratio: 4/3;">
+                    <img src="agnolini.jpg" alt="Sopa de Agnolini">
                 </div>
             </div>
         </div>
@@ -170,23 +165,23 @@
 </div>
 
 <div class="slide-wrapper">
-    <div class="slide-container" id="slide4">
+    <div class="slide-container">
         <h2 class="slide-title">Secondary Modules & Hotfixes</h2>
         <div class="content-area">
             <div class="tiled-content">
                 <div class="image-tile">
-                    <div class="image-wrapper"><img src="quentao.jpg" alt="Quentão tradicional"></div>
-                    <h3><i class="fa-solid fa-fire" style="color: #f97316; margin-right: 10px;"></i>Quentão Protocol</h3>
+                    <div class="image-wrapper"><img src="quentao.jpg" alt="Quentão"></div>
+                    <h3><i class="fa-solid fa-fire" style="color: #f97316;"></i> Quentão Protocol</h3>
                     <p>Patch de aquecimento essencial com especiarias e frutas. Interface líquida quente.</p>
                 </div>
                 <div class="image-tile">
-                    <div class="image-wrapper"><img src="pipoca.jpg" alt="Pipoca e Pinhão"></div>
-                    <h3><i class="fa-solid fa-popcorn" style="color: #10b981; margin-right: 10px;"></i>Popcorn & Pinhão</h3>
+                    <div class="image-wrapper"><img src="pipoca.jpg" alt="Pipoca"></div>
+                    <h3><i class="fa-solid fa-popcorn" style="color: #10b981;"></i> Popcorn & Pinhão</h3>
                     <p>Micro-serviços crocantes de pipoca e pinhão para o início do deployment.</p>
                 </div>
                 <div class="image-tile">
-                    <div class="image-wrapper"><img src="doces.jpg" alt="Doces juninos"></div>
-                    <h3><i class="fa-solid fa-candy-cane" style="color: #f97316; margin-right: 10px;"></i>Junina Sweets</h3>
+                    <div class="image-wrapper"><img src="doces.jpg" alt="Doces"></div>
+                    <h3><i class="fa-solid fa-candy-cane" style="color: #f97316;"></i> Junina Sweets</h3>
                     <p>Plugins de açúcar: Paçoca, pé de moleque e bolos típicos na mesa de doces.</p>
                 </div>
             </div>
@@ -194,42 +189,40 @@
     </div>
 </div>
 
-<div class="slide-wrapper">
-    <div class="slide-container bleed-image-layout" id="slide5">
-        <div class="content-container">
-            <h2 class="slide-title">Protocolo Inbound</h2>
-            <h3 style="color: #f8fafc; font-size: 28px; margin-bottom: 20px;">BYOB: Bring Your Own Beverage</h3>
-            <p>Para garantir a compatibilidade total com o paladar de cada usuário, adotamos o modelo de bebida compartilhada.</p>
-            <p><strong>Ação requerida:</strong> Favor trazer seu vinho favorito ou sua bebida de preferência para o brinde final.</p>
-            <div style="background: #0f172a; padding: 25px; border-radius: 12px; border: 1px dashed #f97316; margin-top: 30px;">
-                <p class="code-font" style="font-size: 18px; color: #f97316;">while(event_running) {<br>&nbsp;&nbsp;brinde(user_choice_beverage);<br>}</p>
-            </div>
+<div class="slide-wrapper bleed-layout">
+    <div class="content-container">
+        <h2 class="slide-title" style="width:100%">Protocolo Inbound</h2>
+        <h3 style="color: #f8fafc; font-size: min(2.2vw, 28px); margin-bottom: 15px;">BYOB: Bring Your Own Beverage</h3>
+        <p>Para garantir a compatibilidade com o paladar de cada usuário, adotamos o modelo de bebida compartilhada.</p>
+        <p><strong>Ação requerida:</strong> Favor trazer seu vinho favorito ou sua bebida de preferência.</p>
+        <div style="background: #0f172a; padding: 4%; border-radius: 12px; border: 1px dashed #f97316; margin-top: 15px;">
+            <p class="code-font" style="font-size: min(1.4vw, 18px); color: #f97316; margin:0;">while(event_running) {<br>&nbsp;&nbsp;brinde(user_drink);<br>}</p>
         </div>
-        <div class="image-container">
-            <img src="vinhos.png" alt="Vinho e taças">
-        </div>
+    </div>
+    <div class="image-container">
+        <img src="vinhos.png" alt="Bebidas">
     </div>
 </div>
 
 <div class="slide-wrapper">
-    <div class="slide-container" id="slide6">
+    <div class="slide-container">
         <h2 class="slide-title">Side Quests & Activities</h2>
         <div class="content-area">
             <div class="tiled-content">
-                <div class="image-tile" style="padding: 40px 20px;">
-                    <div class="icon" style="font-size: 54px; color: #f97316; margin-bottom: 20px;"><i class="fa-solid fa-trophy"></i></div>
-                    <h3>Bingo da Piazada</h3>
+                <div class="image-tile">
+                    <div class="image-wrapper"><img src="bingo.jpg" alt="Bingo da Piazada"></div>
+                    <h3><i class="fa-solid fa-trophy" style="color: #f97316;"></i> Bingo da Piazada</h3>
                     <p>Thread paralela com prêmios alusivos à Copa 2026. Organizado pela nossa piazada!</p>
                 </div>
-                <div class="image-tile" style="padding: 40px 20px;">
-                    <div class="icon" style="font-size: 54px; color: #10b981; margin-bottom: 20px;"><i class="fa-solid fa-ticket"></i></div>
-                    <h3>Sticker Merge</h3>
+                <div class="image-tile">
+                    <div class="image-wrapper"><img src="figurinhas.jpg" alt="Troca de Figurinhas"></div>
+                    <h3><i class="fa-solid fa-ticket" style="color: #10b981;"></i> Sticker Merge</h3>
                     <p>Ponto oficial de troca de figurinhas da Copa. Traga suas repetidas para o merge!</p>
                 </div>
-                <div class="image-tile" style="padding: 40px 20px;">
-                    <div class="icon" style="font-size: 54px; color: #f97316; margin-bottom: 20px;"><i class="fa-solid fa-utensils"></i></div>
-                    <h3>Open Source Food</h3>
-                    <p>Injeção de módulos: Deseja levar um prato típico? Indique o "payload" no formulário!</p>
+                <div class="image-tile">
+                    <div class="image-wrapper"><img src="prato.jpg" alt="Comida típica"></div>
+                    <h3><i class="fa-solid fa-utensils" style="color: #f97316;"></i> Open Source Food</h3>
+                    <p>Injeção de pratos: Deseja levar um prato típico? Indique o payload no formulário!</p>
                 </div>
             </div>
         </div>
@@ -237,7 +230,7 @@
 </div>
 
 <div class="slide-wrapper">
-    <div class="slide-container" id="slide7">
+    <div class="slide-container">
         <h2 class="slide-title">Manifesto de Configuração</h2>
         <div class="content-area">
             <div class="table-layout">
@@ -273,52 +266,22 @@
 </div>
 
 <div class="slide-wrapper">
-    <div class="slide-container" id="slide8">
+    <div class="slide-container">
         <div class="section-title-layout">
             <h1>Commit sua Presença!</h1>
-            <p class="subtitle" style="margin-bottom: 45px;">Acesse o formulário oficial para validar sua entrada na rede do Arraiá.</p>
+            <p class="subtitle" style="margin-bottom: 30px;">Acesse o formulário oficial para validar sua entrada na rede do Arraiá.</p>
             
-            <div style="background: #1e293b; padding: 40px; border-radius: 16px; border: 2px solid #10b981; max-width: 900px; margin: 0 auto;">
-                <p class="code-font" style="font-size: 22px; color: #f1f5f9; margin-bottom: 25px;">
+            <div style="background: #1e293b; padding: 4%; border-radius: 16px; border: 2px solid #10b981; max-width: 80%; margin: 0 auto;">
+                <p class="code-font" style="font-size: min(2vw, 22px); color: #f1f5f9; margin-bottom: 15px; word-break: break-all;">
                     <a href="https://forms.gle/6nzaBRJHS19uWoSK6" target="_blank" style="color: #10b981; text-decoration: none;">https://forms.gle/6nzaBRJHS19uWoSK6</a>
                 </p>
-                <p style="color: #94a3b8; font-size: 18px;">Clique no link acima para confirmar: nome, acompanhantes, interesse no bingo e sua contribuição opcional de prato típico.</p>
+                <p style="color: #94a3b8; font-size: min(1.5vw, 18px); margin:0;">Clique no link para confirmar nome, acompanhantes e sua contribuição.</p>
             </div>
             
-            <p class="code-font" style="margin-top: 50px; font-size: 26px; color: #f97316;">// Nos vemos no dia 04/07!</p>
+            <p class="code-font" style="margin-top: 4%; font-size: min(2.2vw, 26px); color: #f97316;">// Nos vemos no dia 04/07!</p>
         </div>
     </div>
 </div>
-
-<script>
-    function aplicarAutoEscala() {
-        const larguraOriginal = 1280;
-        const alturaOriginal = 720;
-        const wrappers = document.querySelectorAll('.slide-wrapper');
-        const larguraJanela = window.innerWidth;
-
-        if (larguraJanela < larguraOriginal) {
-            const escala = larguraJanela / larguraOriginal;
-            
-            wrappers.forEach(wrapper => {
-                wrapper.style.transform = `scale(${escala})`;
-                wrapper.style.height = `${alturaOriginal * escala}px`;
-                wrapper.style.width = `${larguraOriginal}px`;
-            });
-            // Alinha o body inteiro via Flexbox para evitar desvios laterais
-            document.body.style.alignItems = 'center';
-        } else {
-            wrappers.forEach(wrapper => {
-                wrapper.style.transform = 'none';
-                wrapper.style.height = `${alturaOriginal}px`;
-                wrapper.style.width = `${larguraOriginal}px`;
-            });
-        }
-    }
-
-    window.addEventListener('load', aplicarAutoEscala);
-    window.addEventListener('resize', aplicarAutoEscala);
-</script>
 
 </body>
 </html>
