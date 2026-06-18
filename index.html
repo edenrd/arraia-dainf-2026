@@ -29,7 +29,7 @@
             width: 1280px;
             height: 720px;
             position: relative;
-            transform-origin: top center; /* Essencial para o cálculo do script */
+            transform-origin: top left; /* Alterado para top left para precisão no cálculo */
             margin-bottom: 0;
         }
 
@@ -139,7 +139,7 @@
             </div>
             <div style="margin-top: 50px;">
                 <p class="code-font" style="font-size: 20px; color: #10b981;">// Connectivity status: Available</p>
-                <p style="font-size: 28px; color: #f1f5f9;">Sábado, 04 de Julho — <strong>A partir das 17h30min.</strong></p>
+                <p style="font-size: 28px; color: #f1f5f9;">Sábado, 04 de Julho — <strong>A partir das 17h</strong></p>
             </div>
         </div>
     </div>
@@ -205,7 +205,7 @@
             </div>
         </div>
         <div class="image-container">
-            <img src="vinhos.jpeg" alt="Vinho e taças">
+            <img src="bebidas.jpg" alt="Vinho e taças">
         </div>
     </div>
 </div>
@@ -250,7 +250,7 @@
                     <tbody>
                         <tr>
                             <td><span class="code-font">start_time</span></td>
-                            <td>A partir das 17:30h (GMT-3)</td>
+                            <td>A partir das 17:00h (GMT-3)</td>
                         </tr>
                         <tr>
                             <td><span class="code-font">dress_code</span></td>
@@ -296,32 +296,30 @@
         const wrappers = document.querySelectorAll('.slide-wrapper');
         const larguraJanela = window.innerWidth;
 
-        // Se a tela for menor que os slides (ex: Celulares), calcula a proporção de redução
         if (larguraJanela < larguraOriginal) {
             const escala = larguraJanela / larguraOriginal;
+            // Calcula quanta margem esquerda precisamos adicionar para centralizar perfeitamente
+            const margemEsquerda = (larguraJanela - (larguraOriginal * escala)) / 2;
             
             wrappers.forEach(wrapper => {
-                // Aplica o encolhimento visual via CSS Matrix/Transform
                 wrapper.style.transform = `scale(${escala})`;
-                // Ajusta o espaço vertical ocupado na tela após o encolhimento
                 wrapper.style.height = `${alturaOriginal * escala}px`;
-                wrapper.style.width = `${larguraJanela}px`;
+                wrapper.style.width = `${larguraOriginal}px`;
+                wrapper.style.marginLeft = `${margemEsquerda}px`; // Força a centralização matemática
             });
         } else {
-            // Se abrir no Computador, mantém o tamanho padrão original 16:9
             wrappers.forEach(wrapper => {
                 wrapper.style.transform = 'none';
                 wrapper.style.height = `${alturaOriginal}px`;
                 wrapper.style.width = `${larguraOriginal}px`;
+                wrapper.style.marginLeft = '0px';
             });
         }
     }
 
-    // Executa ao carregar e se o usuário virar a tela do celular
     window.addEventListener('load', aplicarAutoEscala);
     window.addEventListener('resize', aplicarAutoEscala);
 </script>
 
 </body>
 </html>
-
